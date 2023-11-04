@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block titile %}
+<title>Login..</title>
+{% endblock titile %}
+
+{% block content %}
+
+ <!-- Header-->
+ <header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Please Login to Access More Features!</h1>
+            
+        </div>
+    </div>
+</header>
+
+<div class="container mt-5">
+    <div class="row">
+        
+            <div class="col-md-6">
+                <form action={% url "login" %} class="mb-5" method = 'POST'>
+                    {% csrf_token %}
+                    <div class="mb-3 mt-3">
+                      <label for="text" class="form-label">UserName:</label>
+                      <input type="text" class="form-control" id="username" placeholder="Enter UserName" name="username">
+                    </div>
+                    <div class="mb-3">
+                      <label for="pwd" class="form-label">Password:</label>
+                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">Login</button>
+                  </form>
+
+
+
+                  {% if error %}
+
+                  <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                       <strong>Error!</strong>{{error}}
+
+                  </div>
+
+                  {% endif %}
+
+
+            </div>
+        
+    </div>
+</div>
+
+{% endblock content %}
