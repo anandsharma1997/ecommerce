@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Product
 from django.contrib.auth import login, authenticate, logout
+from .registerform import RegisterForm
 
 # Create your views here.
 
@@ -30,3 +31,28 @@ def login_user(request):
 def louout_user(request):
     logout(request)
     return redirect('home')
+
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+        else:
+            return redirect('home')
+            
+    form = RegisterForm()
+    return render(request, "register.html" ,{'form': form} )
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = RegisterForm()
+        
+    return render(request, "register.html", {'form': form})

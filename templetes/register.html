@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block titile %}
+<title>Register..</title>
+{% endblock titile %}
+
+{% block content %}
+
+ <!-- Header-->
+ <header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Please Register to Access More Features!</h1>
+            
+        </div>
+    </div>
+</header>
+
+<div class="container mt-5">
+    <div class="row">
+        
+            <div class="col-md-6">
+                <form action={% url "register" %} class="mb-5" method = 'POST'>
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-success">Register</button>
+
+
+
+                  {% if error %}
+
+                  <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                       <strong>Error!</strong>{{error}}
+
+                  </div>
+
+                  {% endif %}
+
+
+            </div>
+        
+    </div>
+</div>
+
+{% endblock content %}
