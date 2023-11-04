@@ -56,3 +56,9 @@ def register(request):
         form = RegisterForm()
         
     return render(request, "register.html", {'form': form})
+
+
+def product(request, pk):
+    product = Product.objects.get(id=pk)
+
+    return render(request, "product.html", {'product':product})

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block titile %}
+<title>About Us..</title>
+{% endblock titile %}
+
+{% block content %}
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <img src={{product.image.url}} alt="" class="img-fluid rounded">
+        </div>
+        <div class="col-md-8">
+            <h1>{{product.name}}</h1>
+            <h2>Category: {{product.category}}</h2>
+            {% if product.is_sale %}
+
+            <h1 class="text-success">Sale Price: {{product.sale_price}} Rupees</h1>
+            <p class="text-danger">Original price : {{product.price}}</p>
+
+            {% else %}
+
+            <h1>Price : {{product.price}}</h1>
+
+            {% endif %}
+            <p>Description: {{product.description}}</p>
+            
+        </div>
+        
+    </div>
+</div>
+
+{% endblock content %}
