@@ -9,5 +9,6 @@ urlpatterns = [
     path('logout/', views.louout_user, name='logout'),
     path('register/', views.register, name='register'),
     path('product/<int:pk>/', views.product, name='product'),
-    path('categories/<str:gname>/', views.categoryPage, name='categorypage')
+    path('categories/<str:gname>/', views.categoryPage, name='categorypage'),
+    path('<path:invalid_path>', views.custom_404, name='custom_404'),
 ]

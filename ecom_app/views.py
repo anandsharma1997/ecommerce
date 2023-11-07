@@ -77,3 +77,5 @@ def categoryPage(request, gname):
 
 
 
+def custom_404(request, invalid_path):
+    return render(request, '404.html', {'invalid_path': invalid_path}, status=404)
