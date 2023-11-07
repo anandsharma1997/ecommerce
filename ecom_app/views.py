@@ -1,13 +1,16 @@
 from django.shortcuts import render, redirect
-from .models import Product
+from .models import Product , Category
 from django.contrib.auth import login, authenticate, logout
 from .registerform import RegisterForm
+from django.contrib import messages
 
 # Create your views here.
 
 
 def home(request):
     product_list = Product.objects.all()
+    print(product_list, "this is home product")
+   
     return render(request, "home.html",{'products': product_list})
 
 def about(request):
@@ -62,3 +65,15 @@ def product(request, pk):
     product = Product.objects.get(id=pk)
 
     return render(request, "product.html", {'product':product})
+
+
+
+def categoryPage(request, gname):
+    category = Category.objects.get(name=gname)
+    products = Product.objects.filter(category=category)
+    print(category)
+    print(products)
+    return render(request, "categoryPage.html", {'category': category, 'products': products})
+
+
+
