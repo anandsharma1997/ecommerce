@@ -6,16 +6,16 @@ from django.contrib import messages
 
 # Create your views here.
 
-
+# Showing all the product in home page
 def home(request):
     product_list = Product.objects.all()
-    print(product_list, "this is home product")
-   
     return render(request, "home.html",{'products': product_list})
 
+# This is for About us page 
 def about(request):
     return render(request, "about.html", {})
 
+# Login page
 def login_user(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -30,23 +30,14 @@ def login_user(request):
         
     else:
      return render(request, "login.html", {})
+    
 
+# Logout button function
 def louout_user(request):
     logout(request)
     return redirect('home')
 
-
-def register(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login')
-        else:
-            return redirect('home')
-            
-    form = RegisterForm()
-    return render(request, "register.html" ,{'form': form} )
+# User Registration page
 
 def register(request):
     if request.method == 'POST':
@@ -60,14 +51,14 @@ def register(request):
         
     return render(request, "register.html", {'form': form})
 
-
+# Single product page
 def product(request, pk):
     product = Product.objects.get(id=pk)
 
     return render(request, "product.html", {'product':product})
 
 
-
+# Category page for products
 def categoryPage(request, gname):
     category = Category.objects.get(name=gname)
     products = Product.objects.filter(category=category)
@@ -76,6 +67,6 @@ def categoryPage(request, gname):
     return render(request, "categoryPage.html", {'category': category, 'products': products})
 
 
-
+# 404 page
 def custom_404(request, invalid_path):
     return render(request, '404.html', {'invalid_path': invalid_path}, status=404)
