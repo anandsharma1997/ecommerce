@@ -70,3 +70,9 @@ def categoryPage(request, gname):
 # 404 page
 def custom_404(request, invalid_path):
     return render(request, '404.html', {'invalid_path': invalid_path}, status=404)
+
+
+# cart page
+
+def cart_summary(request):
+    return render(request, "cart_summary.html", {})

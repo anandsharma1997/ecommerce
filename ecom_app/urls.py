@@ -10,5 +10,11 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('product/<int:pk>/', views.product, name='product'),
     path('categories/<str:gname>/', views.categoryPage, name='categorypage'),
+    # Cart urls is here
+    path('cart/', views.cart_summary, name='cart_summary'),
+    # 404 url
     path('<path:invalid_path>', views.custom_404, name='custom_404'),
+
+    
+    
 ]

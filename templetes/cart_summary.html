@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Cart</title>
+{% endblock title %}
+
+{% block content %}
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Add Products to Cart!</h1>
+                {% if user.is_authenticated %}
+                    <p class="lead fw-normal text-white-50 mb-0">Hello {{ user.username }}</p>
+                {% else %}
+                    <p class="lead fw-normal text-white-50 mb-0">You are not logged in.</p>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <div class="container mt-5">
+        <div class="row">
+            hello
+        </div>
+    </div>
+{% endblock content %}
